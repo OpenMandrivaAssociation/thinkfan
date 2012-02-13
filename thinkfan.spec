@@ -59,4 +59,4 @@ fi
 %doc README ChangeLog NEWS examples/
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_sbindir}/%{name}
-#%{unitdir}/%{name}.service
+%{_unitdir}/%{name}.service
