@@ -1,5 +1,5 @@
 Name:           thinkfan
-Version:        0.8_alpha2
+Version:        0.8.0
 Release:        1
 Summary:        Simple and lightweight fan control program
 Group:		System/Base
