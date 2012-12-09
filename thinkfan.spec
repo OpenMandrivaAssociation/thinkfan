@@ -60,3 +60,15 @@ fi
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_sbindir}/%{name}
 %{_unitdir}/%{name}.service
+
+
+%changelog
+* Sun May 13 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.8.0-1
++ Revision: 798537
+- version update 0.8.0
+
+* Mon Feb 13 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.8_alpha2-1
++ Revision: 773745
+- _unitdir insted own macro
+- imported package thinkfan
+
