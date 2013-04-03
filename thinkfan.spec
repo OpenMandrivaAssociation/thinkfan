@@ -1,6 +1,8 @@
+%define debug_package %{nil}
+
 Name:           thinkfan
 Version:        0.8.0
-Release:        1
+Release:        2
 Summary:        Simple and lightweight fan control program
 Group:		System/Base
 License:        GPLv3+
