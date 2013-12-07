@@ -2,7 +2,7 @@
 
 Name:           thinkfan
 Version:        0.8.0
-Release:        5
+Release:        6
 Summary:        Simple and lightweight fan control program
 Group:		System/Base
 License:        GPLv3+
