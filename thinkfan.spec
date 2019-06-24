@@ -1,18 +1,19 @@
 %define debug_package %{nil}
 
 Name:           thinkfan
-Version:        0.8.0
+Version:	1.0.2
 Release:        11
 Summary:        Simple and lightweight fan control program
 Group:		System/Base
 License:        GPLv3+
 URL:            http://thinkfan.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/thinkfan/%{name}-%{version}.tar.gz
+Source0:	https://github.com/vmatare/thinkfan/archive/%{version}.tar.gz
 Source1:        %{name}.service
-BuildRequires:  systemd-units
-Requires(post): systemd-units
-Requires(preun): systemd-units
-Requires(postun): systemd-units
+BuildRequires:  pkgconfig(yaml-cpp)
+BuildRequires:  pkgconfig(libatasmart)
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  cmake
+Requires(pre):	rpm-helper
 
 %define unitdir /lib/systemd/system/
 
@@ -25,17 +26,15 @@ CPU power as possible.
 %prep
 %setup -q
 
-
 %build
-%make
+%cmake
+%make_build
 
 
 %install
-install -p -D -m 0755 thinkfan %{buildroot}%{_sbindir}/%{name}
-#install -p -D -m 644 rcscripts/%{name}.service %{buildroot}%{_unitdir}/%{name}.service
-# this is more complete:
-install -p -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
-install -p -D -m 644 examples/thinkfan.conf.complex  %{buildroot}%{_sysconfdir}/%{name}.conf
+%make_install -C build
+mkdir -p %{buildroot}/lib
+mv %{buildroot}%{_libdir}/systemd/ %{buildroot}/lib
 
 %post
 if [ $1 -eq 1 ] ; then 
@@ -58,19 +57,11 @@ if [ $1 -ge 1 ] ; then
 fi
 
 %files
-%doc README ChangeLog NEWS examples/
-%config(noreplace) %{_sysconfdir}/%{name}.conf
+%doc README COPYING examples/
+#%config(noreplace) %{_sysconfdir}/%{name}.conf
+%{_sysconfdir}/systemd/system/thinkfan.service.d/override.conf
 %{_sbindir}/%{name}
-%{_unitdir}/%{name}.service
-
-
-%changelog
-* Sun May 13 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.8.0-1
-+ Revision: 798537
-- version update 0.8.0
-
-* Mon Feb 13 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.8_alpha2-1
-+ Revision: 773745
-- _unitdir insted own macro
-- imported package thinkfan
-
+%{_unitdir}/%{name}*.service
+%{_mandir}/man1/thinkfan.1.*
+%{_mandir}/man5/thinkfan.conf.5.*
+%{_datadir}/doc/thinkfan/thinkfan.conf.*
