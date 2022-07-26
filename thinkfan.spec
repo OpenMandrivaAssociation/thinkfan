@@ -1,13 +1,13 @@
 %define debug_package %{nil}
 
 Name:           thinkfan
-Version:	1.1
-Release:	3
+Version:	1.3.1
+Release:	1
 Summary:        Simple and lightweight fan control program
 Group:		System/Base
 License:        GPLv3+
 URL:            http://thinkfan.sourceforge.net/
-Source0:	https://github.com/vmatare/thinkfan/archive/%{version}.tar.gz
+Source0:	https://github.com/vmatare/thinkfan/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.service
 BuildRequires:  pkgconfig(yaml-cpp)
 BuildRequires:  pkgconfig(libatasmart)
@@ -33,8 +33,8 @@ CPU power as possible.
 
 %install
 %make_install -C build
-mkdir -p %{buildroot}/lib
-mv %{buildroot}%{_libdir}/systemd/ %{buildroot}/lib
+#mkdir -p %{buildroot}/lib
+#mv %{buildroot}%{_libdir}/systemd/ %{buildroot}/lib
 
 %post
 if [ $1 -eq 1 ] ; then 
@@ -57,11 +57,13 @@ if [ $1 -ge 1 ] ; then
 fi
 
 %files
-%doc README COPYING examples/
+%doc README.md COPYING examples/
+%doc %{_datadir}/doc/thinkfan/thinkfan.yaml
 #%config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_sysconfdir}/systemd/system/thinkfan.service.d/override.conf
 %{_sbindir}/%{name}
 %{_unitdir}/%{name}*.service
 %{_mandir}/man1/thinkfan.1.*
 %{_mandir}/man5/thinkfan.conf.5.*
-%{_datadir}/doc/thinkfan/thinkfan.conf.*
+#{_datadir}/doc/thinkfan/thinkfan.conf.*
+%{_mandir}/man5/thinkfan.conf.legacy.5.*
