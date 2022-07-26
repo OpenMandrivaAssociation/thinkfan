@@ -58,7 +58,7 @@ fi
 
 %files
 %doc README.md COPYING examples/
-%doc %{_doc}/thinkfan/thinkfan.yaml
+%doc %{_datadir}/doc/thinkfan/thinkfan.yaml
 #%config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_sysconfdir}/systemd/system/thinkfan.service.d/override.conf
 %{_sbindir}/%{name}
