@@ -58,6 +58,7 @@ fi
 
 %files
 %doc README.md COPYING examples/
+%doc %{_doc}/thinkfan/thinkfan.yaml
 #%config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_sysconfdir}/systemd/system/thinkfan.service.d/override.conf
 %{_sbindir}/%{name}
@@ -65,3 +66,4 @@ fi
 %{_mandir}/man1/thinkfan.1.*
 %{_mandir}/man5/thinkfan.conf.5.*
 #{_datadir}/doc/thinkfan/thinkfan.conf.*
+%{_mandir}/man5/thinkfan.conf.legacy.5.
