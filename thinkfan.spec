@@ -66,4 +66,4 @@ fi
 %{_mandir}/man1/thinkfan.1.*
 %{_mandir}/man5/thinkfan.conf.5.*
 #{_datadir}/doc/thinkfan/thinkfan.conf.*
-%{_mandir}/man5/thinkfan.conf.legacy.5.
+%{_mandir}/man5/thinkfan.conf.legacy.5.*
