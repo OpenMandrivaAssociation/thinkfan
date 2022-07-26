@@ -33,8 +33,8 @@ CPU power as possible.
 
 %install
 %make_install -C build
-mkdir -p %{buildroot}/lib
-mv %{buildroot}%{_libdir}/systemd/ %{buildroot}/lib
+#mkdir -p %{buildroot}/lib
+#mv %{buildroot}%{_libdir}/systemd/ %{buildroot}/lib
 
 %post
 if [ $1 -eq 1 ] ; then 
