@@ -57,11 +57,11 @@ if [ $1 -ge 1 ] ; then
 fi
 
 %files
-%doc README COPYING examples/
+%doc README.md COPYING examples/
 #%config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_sysconfdir}/systemd/system/thinkfan.service.d/override.conf
 %{_sbindir}/%{name}
 %{_unitdir}/%{name}*.service
 %{_mandir}/man1/thinkfan.1.*
 %{_mandir}/man5/thinkfan.conf.5.*
-%{_datadir}/doc/thinkfan/thinkfan.conf.*
+#{_datadir}/doc/thinkfan/thinkfan.conf.*
