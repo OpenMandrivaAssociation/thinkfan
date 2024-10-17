@@ -6,7 +6,7 @@ Release:	2
 Summary:        Simple and lightweight fan control program
 Group:		System/Base
 License:        GPLv3+
-URL:            http://thinkfan.sourceforge.net/
+URL:            https://thinkfan.sourceforge.net/
 Source0:	https://github.com/vmatare/thinkfan/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.service
 BuildRequires:  pkgconfig(yaml-cpp)
